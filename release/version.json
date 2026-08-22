@@ -1,8 +1,8 @@
 {
   "name": "EnB Droplist",
-  "version": "1.1.17",
+  "version": "1.1.18",
   "download_url": "https://soulbound.se/EnB/Download/EnB%20Droplist.zip",
-  "sha256": "dd7b26d994472bc994e2d0378813cb637319077d9155f39110a7ebb8ee3b8b6f",
+  "sha256": "e1275b26fc53a07d388893285576bbcb1498860604afd0699caf811cff450966",
   "release_date": "2026-08-22",
-  "release_notes": "Live overlay now mirrors the accepted multipass/fuzzy Zone result directly. Dest OCR was aligned to the actual white Dest line and Corpse-of labels are normalized to the underlying mob name."
+  "release_notes": "Monster detection now requires genuinely filled red HP and blue shield bar segments, distinguishing mobs from navpoints/gates with empty bar frames. OCR Status shows bar fill percentages, and loot is tied to the most recent confirmed combat target."
 }
