@@ -1,8 +1,8 @@
 {
   "name": "EnB Droplist",
-  "version": "1.1.21",
+  "version": "1.1.22",
   "download_url": "https://soulbound.se/EnB/Download/EnB%20Droplist.zip",
-  "sha256": "773be51af0099a275b9e84e121b5ede5e823e2a76483da4a874387809f480814",
+  "sha256": "e75ebeaf0205046d1a5a20e8ac9f760d8aa673e6077fb59566fdfcd67a3ce224",
   "release_date": "2026-08-22",
-  "release_notes": "When blue shield fill confirms an enemy, mob name and Level now come directly from the lower-right combat target card using multipass OCR. Generic target OCR can no longer override the confirmed combat-card result."
+  "release_notes": "Fixes OCR Status/Test NameError caused by the missing title_similarity helper. Retains blue-shield enemy detection and combat target-card name/level OCR."
 }
