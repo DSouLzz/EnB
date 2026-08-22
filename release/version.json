@@ -1,8 +1,8 @@
 {
   "name": "EnB Droplist",
-  "version": "1.1.12",
+  "version": "1.1.13",
   "download_url": "https://soulbound.se/EnB/Download/EnB%20Droplist.zip",
-  "sha256": "f274f583b3c9e72edff3d30378536ba7e2c25ad9761ff81c6e6f5b950b087e32",
+  "sha256": "bc3c851675fcb83aa9052dde61b3d90576e5b157c8fbb0bdff63b286f85839fe",
   "release_date": "2026-08-22",
-  "release_notes": "Map title OCR now directly drives the live Zone overlay. Target panel OCR is split into separate mob-name and Level lines, with deterministic panel OCR preferred over calibrated target OCR."
+  "release_notes": "Map OCR is aligned to the actual Earth/Jupiter heading and zones require four real stable reads with garbage filtering. Target name/Level OCR strips were realigned and widened for names such as Dionysian Spore Cluster and Level 4."
 }
