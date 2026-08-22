@@ -32,7 +32,7 @@ jobs:
         shell: bash
         run: |
           ssh -i ~/.ssh/enb_deploy_key soulbound.se@ssh.simply.com \
-            'mkdir -p /public_html/EnB/Download'
+            'mkdir -p public_html/EnB/Download'
 
       - name: Upload release files
         shell: bash
@@ -40,10 +40,10 @@ jobs:
           scp -i ~/.ssh/enb_deploy_key \
             'release/EnB Droplist.zip' \
             'release/version.json' \
-            'soulbound.se@ssh.simply.com:/public_html/EnB/Download/'
+            'soulbound.se@ssh.simply.com:public_html/EnB/Download/'
 
-      - name: Verify uploaded manifest
+      - name: Verify uploaded files
         shell: bash
         run: |
           ssh -i ~/.ssh/enb_deploy_key soulbound.se@ssh.simply.com \
-            'ls -lh /public_html/EnB/Download/ && test -f "/public_html/EnB/Download/EnB Droplist.zip" && test -f /public_html/EnB/Download/version.json'
+            'ls -lh public_html/EnB/Download/ && test -f "public_html/EnB/Download/EnB Droplist.zip" && test -f public_html/EnB/Download/version.json'
