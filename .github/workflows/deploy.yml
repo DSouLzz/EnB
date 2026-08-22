@@ -1,0 +1,49 @@
+name: Deploy EnB Droplist to soulbound.se
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'release/EnB Droplist.zip'
+      - 'release/version.json'
+      - '.github/workflows/deploy.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: enb-droplist-production
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure SSH
+        shell: bash
+        run: |
+          install -d -m 700 ~/.ssh
+          printf '%s\n' "${{ secrets.SIMPLY_SSH_KEY }}" > ~/.ssh/enb_deploy_key
+          chmod 600 ~/.ssh/enb_deploy_key
+          ssh-keyscan -H ssh.simply.com >> ~/.ssh/known_hosts
+
+      - name: Create remote download directory
+        shell: bash
+        run: |
+          ssh -i ~/.ssh/enb_deploy_key soulbound.se@ssh.simply.com \
+            'mkdir -p /public_html/EnB/Download'
+
+      - name: Upload release files
+        shell: bash
+        run: |
+          scp -i ~/.ssh/enb_deploy_key \
+            'release/EnB Droplist.zip' \
+            'release/version.json' \
+            'soulbound.se@ssh.simply.com:/public_html/EnB/Download/'
+
+      - name: Verify uploaded manifest
+        shell: bash
+        run: |
+          ssh -i ~/.ssh/enb_deploy_key soulbound.se@ssh.simply.com \
+            'ls -lh /public_html/EnB/Download/ && test -f "/public_html/EnB/Download/EnB Droplist.zip" && test -f /public_html/EnB/Download/version.json'
