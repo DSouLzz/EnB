@@ -1,8 +1,8 @@
 {
   "name": "EnB Droplist",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "download_url": "https://soulbound.se/EnB/Download/EnB%20Droplist.zip",
-  "sha256": "59c49ad8f32f26e92c5957c462da31f85ccf3f0cc73e87ac5f4154f48077fe06",
+  "sha256": "cd691ad1003899da34983ac5e04b362f9be7afe58006ba8472d92aa3a50c2bbc",
   "release_date": "2026-08-22",
-  "release_notes": "Critical fix: Kills/Drops now save correctly (Summary worksheet NameError fixed). Internal updater version corrected. Also rejects obvious browser/privacy text from OCR."
+  "release_notes": "Added movable always-on-top live overlay. Press F8 to show/hide. Shows Zone, Kills and Last drop only and remembers its position."
 }
