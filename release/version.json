@@ -1,8 +1,8 @@
 {
   "name": "EnB Droplist",
-  "version": "1.1.24",
+  "version": "1.1.25",
   "download_url": "https://soulbound.se/EnB/Download/EnB%20Droplist.zip",
-  "sha256": "610a7e6d533bad72b0c69fe927526fc794affc063177d2d7bcf3cde91e259a1d",
+  "sha256": "22d6225b5a8a775a041a3712a04b3a3d26a4f7930ec97af283622a093ecf532b",
   "release_date": "2026-08-22",
-  "release_notes": "Fixes OCR Status/Test unpacking crash: zone_title_multipass now always returns three values. Build validates the return signature."
+  "release_notes": "Improves combat target-card OCR by isolating bright title/Level text from animated backgrounds and voting across OCR passes."
 }
