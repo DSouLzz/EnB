@@ -1,8 +1,8 @@
 {
   "name": "EnB Droplist",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "download_url": "https://soulbound.se/EnB/Download/EnB%20Droplist.zip",
-  "sha256": "aad5d380d4cb0b53612f147b8a93181920b061956c3902498eaaa12a5c5beff3",
+  "sha256": "b9fab2c08016bcf858cd92bfd8a26e316a713b988d45ca609341f87f7f52fd0d",
   "release_date": "2026-08-22",
-  "release_notes": "Check for Update now always shows visible tray feedback for checking, latest-version, update-available, and error states. HTTPS verification remains enabled using certifi."
+  "release_notes": "Yes/No update confirmation, post-update success dialog, OCR Status/Test, broader CL parsing, and improved kill/zone/item logging diagnostics."
 }
