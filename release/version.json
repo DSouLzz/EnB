@@ -1,8 +1,8 @@
 {
   "name": "EnB Droplist",
-  "version": "1.1.2",
+  "version": "1.1.4",
   "download_url": "https://soulbound.se/EnB/Download/EnB%20Droplist.zip",
-  "sha256": "8415b182d423b3e7cd8734e6427542769e87cfe77ef54e1111e0718b7c78d691",
+  "sha256": "aad5d380d4cb0b53612f147b8a93181920b061956c3902498eaaa12a5c5beff3",
   "release_date": "2026-08-22",
-  "release_notes": "Calibration now pauses before every step and prompts the player to prepare the required game UI. Zone calibration specifically asks the player to open the map before selecting the zone/sector name."
+  "release_notes": "Check for Update now always shows visible tray feedback for checking, latest-version, update-available, and error states. HTTPS verification remains enabled using certifi."
 }
