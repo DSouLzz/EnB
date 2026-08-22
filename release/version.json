@@ -1,8 +1,8 @@
 {
   "name": "EnB Droplist",
-  "version": "1.1.20",
+  "version": "1.1.21",
   "download_url": "https://soulbound.se/EnB/Download/EnB%20Droplist.zip",
-  "sha256": "75ee275b9b20602bd997c8276f292e7e56d9a21a06daca0f4952528b707faeee",
+  "sha256": "773be51af0099a275b9e84e121b5ede5e823e2a76483da4a874387809f480814",
   "release_date": "2026-08-22",
-  "release_notes": "Enemy classification now uses the filled blue shield bar only. Red HP is diagnostic and no longer required, supporting alien mobs with no red HP fill. Corpse-of remains the post-death signal."
+  "release_notes": "When blue shield fill confirms an enemy, mob name and Level now come directly from the lower-right combat target card using multipass OCR. Generic target OCR can no longer override the confirmed combat-card result."
 }
