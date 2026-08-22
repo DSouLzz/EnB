@@ -1,8 +1,8 @@
 {
   "name": "EnB Droplist",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "download_url": "https://soulbound.se/EnB/Download/EnB%20Droplist.zip",
-  "sha256": "cd691ad1003899da34983ac5e04b362f9be7afe58006ba8472d92aa3a50c2bbc",
+  "sha256": "ec53dc433c0474f22db34e18faa99499b02fef99809dea2d2f3534834cb902e0",
   "release_date": "2026-08-22",
-  "release_notes": "Added movable always-on-top live overlay. Press F8 to show/hide. Shows Zone, Kills and Last drop only and remembers its position."
+  "release_notes": "Zone/Area is now map-driven: press M and the calibrated map zone is sampled for 4 seconds. Faster target/loot polling. Live Kills/Last drop update only after XLSX save+readback verification."
 }
