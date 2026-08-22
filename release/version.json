@@ -1,8 +1,8 @@
 {
   "name": "EnB Droplist",
-  "version": "1.1.8",
+  "version": "1.1.9",
   "download_url": "https://soulbound.se/EnB/Download/EnB%20Droplist.zip",
-  "sha256": "ec53dc433c0474f22db34e18faa99499b02fef99809dea2d2f3534834cb902e0",
+  "sha256": "d7f33e9b06b9749ce6626761561fcc13f545ca051447bcc8882adaa6d7666675",
   "release_date": "2026-08-22",
-  "release_notes": "Zone/Area is now map-driven: press M and the calibrated map zone is sampled for 4 seconds. Faster target/loot polling. Live Kills/Last drop update only after XLSX save+readback verification."
+  "release_notes": "Loot item names now come from EnB hover tooltips instead of icon OCR. The logger never moves the mouse. Tooltip metadata is filtered, live Last drop updates immediately, and verified item names are written to Excel."
 }
