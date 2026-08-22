@@ -1,8 +1,8 @@
 {
   "name": "EnB Droplist",
-  "version": "1.1.11",
+  "version": "1.1.12",
   "download_url": "https://soulbound.se/EnB/Download/EnB%20Droplist.zip",
-  "sha256": "08cbb4d9035d055abe13b7cb0fbe97897d62443f1db14108319f0d4f903f5789",
+  "sha256": "f274f583b3c9e72edff3d30378536ba7e2c25ad9761ff81c6e6f5b950b087e32",
   "release_date": "2026-08-22",
-  "release_notes": "Replaced broad OCR fallbacks with narrow deterministic EnB title strips: map title for Zone and lower-right target title for Mob/Target. Rejects symbol-heavy zone garbage while retaining hover-tooltip loot OCR."
+  "release_notes": "Map title OCR now directly drives the live Zone overlay. Target panel OCR is split into separate mob-name and Level lines, with deterministic panel OCR preferred over calibrated target OCR."
 }
