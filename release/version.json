@@ -1,8 +1,8 @@
 {
   "name": "EnB Droplist",
-  "version": "1.1.14",
+  "version": "1.1.15",
   "download_url": "https://soulbound.se/EnB/Download/EnB%20Droplist.zip",
-  "sha256": "e5c0fcb4e1246c250869e2f3bda0053bd999c0395a0dfa6deadff263b651fcaa",
+  "sha256": "90740405cb1f08591bb890b2f7c528f83dd14dddfeb7f3b57412b19ba2d9380c",
   "release_date": "2026-08-22",
-  "release_notes": "OCR regions now follow the actual EnB client rendering area. Map title and target/Level strips were realigned, with Dest:/reticle fallback for target recognition and stricter five-read zone validation."
+  "release_notes": "Live Zone now polls the proven map-title OCR path every scan instead of depending on M-key timing. Target title and Level strips were realigned."
 }
