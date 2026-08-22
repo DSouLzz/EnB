@@ -1,8 +1,8 @@
 {
   "name": "EnB Droplist",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "download_url": "https://soulbound.se/EnB/Download/EnB%20Droplist.zip",
-  "sha256": "b9fab2c08016bcf858cd92bfd8a26e316a713b988d45ca609341f87f7f52fd0d",
+  "sha256": "59c49ad8f32f26e92c5957c462da31f85ccf3f0cc73e87ac5f4154f48077fe06",
   "release_date": "2026-08-22",
-  "release_notes": "Yes/No update confirmation, post-update success dialog, OCR Status/Test, broader CL parsing, and improved kill/zone/item logging diagnostics."
+  "release_notes": "Critical fix: Kills/Drops now save correctly (Summary worksheet NameError fixed). Internal updater version corrected. Also rejects obvious browser/privacy text from OCR."
 }
