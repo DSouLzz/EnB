@@ -1,8 +1,8 @@
 {
   "name": "EnB Droplist",
-  "version": "1.1.31",
+  "version": "1.1.32",
   "download_url": "https://soulbound.se/EnB/Download/EnB%20Droplist.zip",
-  "sha256": "84c51f625bf75bc13ab67a4b9242482f46446f2de97c2d64bdb3384a98cf6e41",
+  "sha256": "f6681ebc60e577d0ea10bed4fe8e47409b42511f35e5af6485e2b018c61f6473",
   "release_date": "2026-08-23",
-  "release_notes": "OCR reliability update: enemies require an explicit Level row in the target card, target OCR scans the corrected higher target-card header, and F8 prefers the last confirmed live zone instead of raw OCR noise."
+  "release_notes": "OCR fix: target-card scan extends through the Level row; sentence-like false zones such as 'Du kan' are rejected. App dialogs and the F8 live overlay are translucent."
 }
