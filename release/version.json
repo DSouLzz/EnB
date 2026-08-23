@@ -1,8 +1,8 @@
 {
   "name": "EnB Droplist",
-  "version": "1.1.28",
+  "version": "1.1.29",
   "download_url": "https://soulbound.se/EnB/Download/EnB%20Droplist.zip",
-  "sha256": "0418d6148d8973c0f24218de843b06a68bb7d26f27afb523355264ddf058b416",
+  "sha256": "883a00bdfe3249bba5226dd3ce539f59d70b817a5f06963641c07f43363f28da",
   "release_date": "2026-08-23",
-  "release_notes": "Adds Manual Update from ZIP and Check / Repair Files. Validates local ZIP integrity/package/version/SHA-256, backs up program files, and preserves user data."
+  "release_notes": "Enemy classification is now based on the target card Level row: Level present = enemy/mob; no Level = neutral/object/wreck/navpoint. Blue/red combat bars are diagnostic only."
 }
