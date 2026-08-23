@@ -1,8 +1,8 @@
 {
   "name": "EnB Droplist",
-  "version": "1.1.30",
+  "version": "1.1.31",
   "download_url": "https://soulbound.se/EnB/Download/EnB%20Droplist.zip",
-  "sha256": "934a65fc8f6ddc248237256b5975c1f1635af0945494b90714a33ceae9c7377e",
+  "sha256": "84c51f625bf75bc13ab67a4b9242482f46446f2de97c2d64bdb3384a98cf6e41",
   "release_date": "2026-08-23",
-  "release_notes": "Fixes online updater and Check/Repair. Updates now fall back to the GitHub release when soulbound.se fails or has the wrong SHA. Check/Repair is fully automatic and does not ask the user to locate a folder or ZIP."
+  "release_notes": "OCR reliability update: enemies require an explicit Level row in the target card, target OCR scans the corrected higher target-card header, and F8 prefers the last confirmed live zone instead of raw OCR noise."
 }
