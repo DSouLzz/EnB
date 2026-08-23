@@ -1,8 +1,8 @@
 {
   "name": "EnB Droplist",
-  "version": "1.1.32",
+  "version": "1.1.33",
   "download_url": "https://soulbound.se/EnB/Download/EnB%20Droplist.zip",
-  "sha256": "f6681ebc60e577d0ea10bed4fe8e47409b42511f35e5af6485e2b018c61f6473",
+  "sha256": "99f83f09f18e419bb77ba82768914567bae37cc88654cab9889d0fa3003997ab",
   "release_date": "2026-08-23",
-  "release_notes": "OCR fix: target-card scan extends through the Level row; sentence-like false zones such as 'Du kan' are rejected. App dialogs and the F8 live overlay are translucent."
+  "release_notes": "Live kills count on Level-to-no-Level transition; F8 updates at death; XLSX records kill immediately and attaches hovered drops later. Zone changes only during M-key OCR window."
 }
