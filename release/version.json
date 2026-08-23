@@ -1,8 +1,8 @@
 {
   "name": "EnB Droplist",
-  "version": "1.1.33",
+  "version": "1.1.34",
   "download_url": "https://soulbound.se/EnB/Download/EnB%20Droplist.zip",
-  "sha256": "99f83f09f18e419bb77ba82768914567bae37cc88654cab9889d0fa3003997ab",
+  "sha256": "194c3daba42ee56da1e449c37f9eb667bbbbd9cc8fe3c2be4c961614bf38f461",
   "release_date": "2026-08-23",
-  "release_notes": "Live kills count on Level-to-no-Level transition; F8 updates at death; XLSX records kill immediately and attaches hovered drops later. Zone changes only during M-key OCR window."
+  "release_notes": "Dedicated target Level-strip OCR with digit fallback. Zone refresh detects the real open map panel via Dest:, and F8/live zone no longer depends only on the M hotkey."
 }
