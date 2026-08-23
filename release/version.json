@@ -1,8 +1,8 @@
 {
   "name": "EnB Droplist",
-  "version": "1.1.25",
+  "version": "1.1.27",
   "download_url": "https://soulbound.se/EnB/Download/EnB%20Droplist.zip",
-  "sha256": "22d6225b5a8a775a041a3712a04b3a3d26a4f7930ec97af283622a093ecf532b",
-  "release_date": "2026-08-22",
-  "release_notes": "Improves combat target-card OCR by isolating bright title/Level text from animated backgrounds and voting across OCR passes."
+  "sha256": "e09d8297547a0052ff875857fb948f26af9843b478244792900868a20d2f6c1d",
+  "release_date": "2026-08-23",
+  "release_notes": "Fixes F8 Zone updates by making repeated clean zone titles beat longer noisy OCR strings. Jupiter now wins over strings such as 'Jupiter a aA S a', and the last confirmed Zone is retained when the title is temporarily unreadable."
 }
