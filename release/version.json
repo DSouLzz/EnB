@@ -1,8 +1,8 @@
 {
   "name": "EnB Droplist",
-  "version": "1.1.41",
+  "version": "1.1.42",
   "download_url": "https://soulbound.se/EnB/Download/EnB%20Droplist.zip",
-  "sha256": "094cb3773f8a4aecdcc64d2ddeaa45c0c6f239ae0ce628b07728418262c1c78e",
+  "sha256": "4635e1bd8e59c7ee59ac8abb54c66e0a957f6031b2414f4eb23824299b8f270e",
   "release_date": "2026-08-24",
-  "release_notes": "F8 is now a reliable one-press toggle. The hotkey waits for the physical F8 key to be released before accepting another toggle, preventing Windows hotkey auto-repeat from hiding and immediately re-showing the overlay. Keeps 1.1.40 zone detection and target OCR fixes."
+  "release_notes": "F8 no longer uses RegisterHotKey. It now polls the physical F8 key state with GetAsyncKeyState and toggles on the key-down edge, so the overlay can be shown/hidden while Earth & Beyond itself has focus."
 }
