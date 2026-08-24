@@ -4,5 +4,5 @@
   "download_url": "https://soulbound.se/EnB/Download/EnB%20Droplist.zip",
   "sha256": "85449e48b84d2ae1c7e97058965eb7dc2b585ab156e622ccb3c0419f7848b8b5",
   "release_date": "2026-08-24",
-  "release_notes": "OCR Status/Test now runs in a guarded background worker and resets after every run, so it can be used repeatedly without blocking the tray callback. Zone OCR now rejects short/noisy candidates and requires three agreeing map-title probe reads."
+  "release_notes": "OCR Status/Test runs in a guarded background worker and resets after every run. Zone OCR rejects short/noisy candidates and requires three agreeing map-title probe reads."
 }
