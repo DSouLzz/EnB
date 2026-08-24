@@ -26,7 +26,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Build EnB Droplist 1.1.36 when needed
+      - name: Build EnB Droplist 1.1.36 from verified 1.1.35 base
         shell: bash
         run: |
           set -euo pipefail
@@ -38,7 +38,7 @@ jobs:
             git commit -m "Release EnB Droplist 1.1.36 built and verified"
             git push
           else
-            echo "Release already at 1.1.36; nothing to commit."
+            echo "Release already at verified 1.1.36; nothing to commit."
           fi
 
       - name: Verify release manifest matches ZIP
@@ -52,6 +52,7 @@ jobs:
           actual = hashlib.sha256(zp.read_bytes()).hexdigest()
           expected = str(manifest.get('sha256','')).lower()
           print('version:', manifest.get('version'))
+          print('size   :', zp.stat().st_size)
           print('sha256 :', actual)
           if manifest.get('version') != '1.1.36':
               raise SystemExit(f"Wrong release version: {manifest.get('version')}")
@@ -61,6 +62,8 @@ jobs:
               bad = z.testzip()
               if bad:
                   raise SystemExit(f'ZIP integrity failed at {bad}')
+          if zp.stat().st_size < 40000:
+              raise SystemExit(f'ZIP unexpectedly small: {zp.stat().st_size} bytes')
           print('release verification: OK')
           PY
 
