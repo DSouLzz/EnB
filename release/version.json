@@ -2,7 +2,7 @@
   "name": "EnB Droplist",
   "version": "1.1.40",
   "download_url": "https://soulbound.se/EnB/Download/EnB%20Droplist.zip",
-  "sha256": "0de201e5e99f77ecfa1d41581c4d064c15791d35ed8ac11487105850218cdaa9",
+  "sha256": "edf81d9658d750d31348f18f7bd131b836c795b99372da9b837006402430118a",
   "release_date": "2026-08-24",
   "release_notes": "F8 live zone detection samples the map title every tick and accepts it when the normal title reader and independent probe agree, even when MAP PANEL OPEN incorrectly reports NO. Builder now patches the live zone section structurally."
 }
