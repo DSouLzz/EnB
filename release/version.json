@@ -1,8 +1,7 @@
 {
   "name": "EnB Droplist",
-  "version": "1.1.35",
+  "version": "1.1.36",
   "download_url": "https://soulbound.se/EnB/Download/EnB%20Droplist.zip",
-  "sha256": "366518c0c26421f5f24be77cbbcff6996485afa6101bd609528096e6a4a9e459",
+  "sha256": "85449e48b84d2ae1c7e97058965eb7dc2b585ab156e622ccb3c0419f7848b8b5",
   "release_date": "2026-08-24",
-  "release_notes": "F8/OCR Status uses resilient EnB-window reconnection and same-thread Tk diagnostics. Zone detection accepts the map Dest footer or repeated agreement from a dedicated map-title probe, so valid map zones no longer remain Unknown when Dest OCR is missed."
-}
+  "release_notes": "OCR Status/Test now runs in a guarded background worker and resets after every run, so it can be used repeatedly without blocking the tray callback. Zone OCR now rejects short/noisy candidates and requires three agreeing map-title probe reads."
