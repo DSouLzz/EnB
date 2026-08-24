@@ -1,8 +1,8 @@
 {
   "name": "EnB Droplist",
-  "version": "1.1.40",
+  "version": "1.1.41",
   "download_url": "https://soulbound.se/EnB/Download/EnB%20Droplist.zip",
-  "sha256": "edf81d9658d750d31348f18f7bd131b836c795b99372da9b837006402430118a",
+  "sha256": "094cb3773f8a4aecdcc64d2ddeaa45c0c6f239ae0ce628b07728418262c1c78e",
   "release_date": "2026-08-24",
-  "release_notes": "F8 live zone detection samples the map title every tick and accepts it when the normal title reader and independent probe agree, even when MAP PANEL OPEN incorrectly reports NO. Builder now patches the live zone section structurally."
+  "release_notes": "F8 is now a reliable one-press toggle. The hotkey waits for the physical F8 key to be released before accepting another toggle, preventing Windows hotkey auto-repeat from hiding and immediately re-showing the overlay. Keeps 1.1.40 zone detection and target OCR fixes."
 }
