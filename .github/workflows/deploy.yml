@@ -7,6 +7,7 @@ on:
       - 'release/EnB Droplist.zip'
       - 'release/version.json'
       - '.github/scripts/build_1136.py'
+      - '.github/scripts/build_1136_fix.py'
       - '.github/workflows/deploy.yml'
   workflow_dispatch:
 
@@ -30,7 +31,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python .github/scripts/build_1136.py
+          python .github/scripts/build_1136_fix.py
           if ! git diff --quiet -- "release/EnB Droplist.zip" release/version.json; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
