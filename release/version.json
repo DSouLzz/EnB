@@ -1,8 +1,8 @@
 {
   "name": "EnB Droplist",
-  "version": "1.1.42",
+  "version": "1.1.43",
   "download_url": "https://soulbound.se/EnB/Download/EnB%20Droplist.zip",
-  "sha256": "4635e1bd8e59c7ee59ac8abb54c66e0a957f6031b2414f4eb23824299b8f270e",
+  "sha256": "3ad586388f51702eacd2ce72d421f53baa64642ad3075903191941a824ad8d5f",
   "release_date": "2026-08-24",
-  "release_notes": "F8 no longer uses RegisterHotKey. It now polls the physical F8 key state with GetAsyncKeyState and toggles on the key-down edge, so the overlay can be shown/hidden while Earth & Beyond itself has focus."
+  "release_notes": "Locks confirmed enemy name+Level through death/loot, registers a kill when the corpse loot session opens, attaches loot to that locked enemy, commits map zones immediately when two independent readers agree, rejects common false zone words, and fixes CONFIG overlay-position plus transparent-dialog Tk errors. Keeps 1.1.42 physical F8 polling."
 }
