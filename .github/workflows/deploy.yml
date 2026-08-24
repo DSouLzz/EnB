@@ -6,7 +6,7 @@ on:
     paths:
       - 'release/EnB Droplist.zip'
       - 'release/version.json'
-      - '.github/scripts/build_1134.py'
+      - '.github/scripts/build_1135.py'
       - '.github/workflows/deploy.yml'
   workflow_dispatch:
 
@@ -26,19 +26,19 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Build EnB Droplist 1.1.34 when needed
+      - name: Build EnB Droplist 1.1.35 when needed
         shell: bash
         run: |
           set -euo pipefail
-          python .github/scripts/build_1134.py
+          python .github/scripts/build_1135.py
           if ! git diff --quiet -- "release/EnB Droplist.zip" release/version.json; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add "release/EnB Droplist.zip" release/version.json
-            git commit -m "Release EnB Droplist 1.1.34 built and verified"
+            git commit -m "Release EnB Droplist 1.1.35 built and verified"
             git push
           else
-            echo "Release already at 1.1.34; nothing to commit."
+            echo "Release already at 1.1.35; nothing to commit."
           fi
 
       - name: Verify release manifest matches ZIP
@@ -53,7 +53,7 @@ jobs:
           expected = str(manifest.get('sha256','')).lower()
           print('version:', manifest.get('version'))
           print('sha256 :', actual)
-          if manifest.get('version') != '1.1.34':
+          if manifest.get('version') != '1.1.35':
               raise SystemExit(f"Wrong release version: {manifest.get('version')}")
           if actual != expected:
               raise SystemExit(f'SHA mismatch: manifest={expected} actual={actual}')
