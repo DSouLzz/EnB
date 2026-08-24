@@ -46,7 +46,7 @@ jobs:
         run: |
           set -euo pipefail
           python - <<'PY'
-          import hashlib, json, pathlib, zipfile
+          import hashlib, json, pathlib, zipfile, re
           zp=pathlib.Path('release/EnB Droplist.zip')
           m=json.loads(pathlib.Path('release/version.json').read_text(encoding='utf-8'))
           actual=hashlib.sha256(zp.read_bytes()).hexdigest()
@@ -57,8 +57,15 @@ jobs:
               if z.testzip(): raise SystemExit('ZIP integrity failed')
               tray=next(n for n in z.namelist() if n.endswith('enb_drop_logger_tray.py'))
               source=z.read(tray).decode('utf-8')
-              for required in ('readers_agree','title_similarity(map_title, probe_title)','update_zone(chosen_zone)','is_level_only_target_name'):
-                  if required not in source: raise SystemExit('missing '+required)
+              compact=re.sub(r'\s+','',source)
+              checks={
+                  'readers_agree':'readers_agree' in source,
+                  'two-reader comparison':('title_similarity(map_title,probe_title)' in compact),
+                  'chosen-zone updater':('update_zone(chosen_zone)' in compact),
+                  'level-only target filter':'is_level_only_target_name' in source,
+              }
+              missing=[name for name,ok in checks.items() if not ok]
+              if missing: raise SystemExit('missing '+', '.join(missing))
           print('release verification: OK',m['version'],actual,zp.stat().st_size)
           PY
 
