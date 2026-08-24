@@ -1,8 +1,8 @@
 {
   "name": "EnB Droplist",
-  "version": "1.1.34",
+  "version": "1.1.35",
   "download_url": "https://soulbound.se/EnB/Download/EnB%20Droplist.zip",
-  "sha256": "194c3daba42ee56da1e449c37f9eb667bbbbd9cc8fe3c2be4c961614bf38f461",
-  "release_date": "2026-08-23",
-  "release_notes": "Dedicated target Level-strip OCR with digit fallback. Zone refresh detects the real open map panel via Dest:, and F8/live zone no longer depends only on the M hotkey."
+  "sha256": "366518c0c26421f5f24be77cbbcff6996485afa6101bd609528096e6a4a9e459",
+  "release_date": "2026-08-24",
+  "release_notes": "F8/OCR Status uses resilient EnB-window reconnection and same-thread Tk diagnostics. Zone detection accepts the map Dest footer or repeated agreement from a dedicated map-title probe, so valid map zones no longer remain Unknown when Dest OCR is missed."
 }
