@@ -2,7 +2,7 @@
   "name": "EnB Droplist",
   "version": "1.1.39",
   "download_url": "https://soulbound.se/EnB/Download/EnB%20Droplist.zip",
-  "sha256": "73fb38623cc0de67ab71e5885627d3e30b0bdc0195be56bbd4e3d6e275674dbb",
+  "sha256": "f09e41cda42d854eaefbfeb9da5afed390c55be37e9b5fd54a85a659b549f739",
   "release_date": "2026-08-24",
   "release_notes": "Confirmed map zone from OCR Status/Test is mirrored immediately to the F8 overlay. Fixes 1.1.39 build syntax error and keeps 1.1.38 target OCR fixes."
 }
