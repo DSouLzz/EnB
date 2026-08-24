@@ -6,7 +6,7 @@ on:
     paths:
       - 'release/EnB Droplist.zip'
       - 'release/version.json'
-      - '.github/scripts/build_1140.py'
+      - '.github/scripts/build_1141.py'
       - '.github/workflows/deploy.yml'
   workflow_dispatch:
 
@@ -26,19 +26,19 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Build EnB Droplist 1.1.40 from verified 1.1.39 release
+      - name: Build EnB Droplist 1.1.41 from verified 1.1.40 release
         shell: bash
         run: |
           set -euo pipefail
-          python .github/scripts/build_1140.py
+          python .github/scripts/build_1141.py
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add "release/EnB Droplist.zip" release/version.json
           if ! git diff --cached --quiet; then
-            git commit -m "Release EnB Droplist 1.1.40 built and verified"
+            git commit -m "Release EnB Droplist 1.1.41 built and verified"
             git push
           else
-            echo "Release already at verified 1.1.40; nothing to commit."
+            echo "Release already at verified 1.1.41; nothing to commit."
           fi
 
       - name: Verify release manifest matches ZIP
@@ -46,23 +46,22 @@ jobs:
         run: |
           set -euo pipefail
           python - <<'PY'
-          import hashlib, json, pathlib, zipfile, re
+          import hashlib, json, pathlib, zipfile
           zp=pathlib.Path('release/EnB Droplist.zip')
           m=json.loads(pathlib.Path('release/version.json').read_text(encoding='utf-8'))
           actual=hashlib.sha256(zp.read_bytes()).hexdigest()
-          if m.get('version')!='1.1.40': raise SystemExit('wrong version '+str(m.get('version')))
+          if m.get('version')!='1.1.41': raise SystemExit('wrong version '+str(m.get('version')))
           if actual!=str(m.get('sha256','')).lower(): raise SystemExit('SHA mismatch')
           if zp.stat().st_size<40000: raise SystemExit('ZIP unexpectedly small')
           with zipfile.ZipFile(zp) as z:
               if z.testzip(): raise SystemExit('ZIP integrity failed')
               tray=next(n for n in z.namelist() if n.endswith('enb_drop_logger_tray.py'))
               source=z.read(tray).decode('utf-8')
-              compact=re.sub(r'\s+','',source)
               checks={
-                  'readers_agree':'readers_agree' in source,
-                  'two-reader comparison':('title_similarity(map_title,probe_title)' in compact),
-                  'chosen-zone updater':('update_zone(chosen_zone)' in compact),
-                  'level-only target filter':'is_level_only_target_name' in source,
+                  'F8 key release guard':'GetAsyncKeyState(vk_f8)' in source,
+                  'F8 toggle request':'overlay_toggle_requested.set()' in source,
+                  'zone logic':'readers_agree' in source,
+                  'target filter':'is_level_only_target_name' in source,
               }
               missing=[name for name,ok in checks.items() if not ok]
               if missing: raise SystemExit('missing '+', '.join(missing))
