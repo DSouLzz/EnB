@@ -6,8 +6,7 @@ on:
     paths:
       - 'release/EnB Droplist.zip'
       - 'release/version.json'
-      - 'release_parts/1136_*.b64'
-      - '.github/scripts/assemble_1136.py'
+      - '.github/scripts/build_1137.py'
       - '.github/workflows/deploy.yml'
   workflow_dispatch:
 
@@ -27,17 +26,19 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Assemble exact verified EnB Droplist 1.1.36 ZIP
+      - name: Build EnB Droplist 1.1.37 from verified 1.1.36 release
         shell: bash
         run: |
           set -euo pipefail
-          python .github/scripts/assemble_1136.py
+          python .github/scripts/build_1137.py
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add "release/EnB Droplist.zip" release/version.json
           if ! git diff --cached --quiet; then
-            git commit -m "Release EnB Droplist 1.1.36 exact verified binary"
+            git commit -m "Release EnB Droplist 1.1.37 built and verified"
             git push
+          else
+            echo "Release already at verified 1.1.37; nothing to commit."
           fi
 
       - name: Verify release manifest matches ZIP
@@ -46,17 +47,29 @@ jobs:
           set -euo pipefail
           python - <<'PY'
           import hashlib, json, pathlib, zipfile
-          zp=pathlib.Path('release/EnB Droplist.zip')
-          m=json.loads(pathlib.Path('release/version.json').read_text(encoding='utf-8'))
-          actual=hashlib.sha256(zp.read_bytes()).hexdigest()
-          expected='85449e48b84d2ae1c7e97058965eb7dc2b585ab156e622ccb3c0419f7848b8b5'
-          print('version:',m.get('version'));print('size:',zp.stat().st_size);print('sha256:',actual)
-          if m.get('version')!='1.1.36':raise SystemExit('wrong version')
-          if actual!=expected or str(m.get('sha256','')).lower()!=expected:raise SystemExit('SHA mismatch')
-          if zp.stat().st_size!=50111:raise SystemExit(f'wrong ZIP size {zp.stat().st_size}')
+          zp = pathlib.Path('release/EnB Droplist.zip')
+          manifest = json.loads(pathlib.Path('release/version.json').read_text(encoding='utf-8'))
+          actual = hashlib.sha256(zp.read_bytes()).hexdigest()
+          expected = str(manifest.get('sha256','')).lower()
+          print('version:', manifest.get('version'))
+          print('size   :', zp.stat().st_size)
+          print('sha256 :', actual)
+          if manifest.get('version') != '1.1.37':
+              raise SystemExit(f"Wrong release version: {manifest.get('version')}")
+          if actual != expected:
+              raise SystemExit(f'SHA mismatch: manifest={expected} actual={actual}')
+          if zp.stat().st_size < 40000:
+              raise SystemExit(f'ZIP unexpectedly small: {zp.stat().st_size} bytes')
           with zipfile.ZipFile(zp) as z:
-              bad=z.testzip()
-              if bad:raise SystemExit(f'ZIP integrity failed at {bad}')
+              bad = z.testzip()
+              if bad:
+                  raise SystemExit(f'ZIP integrity failed at {bad}')
+              tray = next(n for n in z.namelist() if n.endswith('enb_drop_logger_tray.py'))
+              source = z.read(tray).decode('utf-8')
+              if 'looks_like_navigation_object_name' not in source:
+                  raise SystemExit('navigation target filter missing')
+              if 'ZONE SOURCE:' not in source:
+                  raise SystemExit('ZONE SOURCE diagnostic missing')
           print('release verification: OK')
           PY
 
