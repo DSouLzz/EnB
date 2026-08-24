@@ -6,7 +6,7 @@ on:
     paths:
       - 'release/EnB Droplist.zip'
       - 'release/version.json'
-      - '.github/scripts/build_1141.py'
+      - '.github/scripts/build_1142.py'
       - '.github/workflows/deploy.yml'
   workflow_dispatch:
 
@@ -26,19 +26,19 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Build EnB Droplist 1.1.41 from verified 1.1.40 release
+      - name: Build EnB Droplist 1.1.42 from verified 1.1.41 release
         shell: bash
         run: |
           set -euo pipefail
-          python .github/scripts/build_1141.py
+          python .github/scripts/build_1142.py
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add "release/EnB Droplist.zip" release/version.json
           if ! git diff --cached --quiet; then
-            git commit -m "Release EnB Droplist 1.1.41 built and verified"
+            git commit -m "Release EnB Droplist 1.1.42 built and verified"
             git push
           else
-            echo "Release already at verified 1.1.41; nothing to commit."
+            echo "Release already at verified 1.1.42; nothing to commit."
           fi
 
       - name: Verify release manifest matches ZIP
@@ -50,7 +50,7 @@ jobs:
           zp=pathlib.Path('release/EnB Droplist.zip')
           m=json.loads(pathlib.Path('release/version.json').read_text(encoding='utf-8'))
           actual=hashlib.sha256(zp.read_bytes()).hexdigest()
-          if m.get('version')!='1.1.41': raise SystemExit('wrong version '+str(m.get('version')))
+          if m.get('version')!='1.1.42': raise SystemExit('wrong version '+str(m.get('version')))
           if actual!=str(m.get('sha256','')).lower(): raise SystemExit('SHA mismatch')
           if zp.stat().st_size<40000: raise SystemExit('ZIP unexpectedly small')
           with zipfile.ZipFile(zp) as z:
@@ -58,8 +58,10 @@ jobs:
               tray=next(n for n in z.namelist() if n.endswith('enb_drop_logger_tray.py'))
               source=z.read(tray).decode('utf-8')
               checks={
-                  'F8 key release guard':'GetAsyncKeyState(vk_f8)' in source,
+                  'physical F8 polling':'GetAsyncKeyState(vk_f8)' in source,
+                  'edge detection':'down and not was_down' in source,
                   'F8 toggle request':'overlay_toggle_requested.set()' in source,
+                  'no RegisterHotKey':'RegisterHotKey(None' not in source,
                   'zone logic':'readers_agree' in source,
                   'target filter':'is_level_only_target_name' in source,
               }
