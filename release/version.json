@@ -1,8 +1,8 @@
 {
   "name": "EnB Droplist",
-  "version": "1.1.38",
+  "version": "1.1.39",
   "download_url": "https://soulbound.se/EnB/Download/EnB%20Droplist.zip",
-  "sha256": "c631a09db25fea9dcdea4b8750dcc4ee916a7197eaeaa948c53fe65dd7a6a7b5",
+  "sha256": "73fb38623cc0de67ab71e5885627d3e30b0bdc0195be56bbd4e3d6e275674dbb",
   "release_date": "2026-08-24",
-  "release_notes": "Target OCR never accepts Level/Lvl/Lv plus a number as the mob name. Enemy recognition still requires a level signal, and OCR Status/Test now syncs its confirmed map zone into the F8 overlay."
+  "release_notes": "Confirmed map zone from OCR Status/Test is mirrored immediately to the F8 overlay. Fixes 1.1.39 build syntax error and keeps 1.1.38 target OCR fixes."
 }
