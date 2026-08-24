@@ -6,7 +6,7 @@ on:
     paths:
       - 'release/EnB Droplist.zip'
       - 'release/version.json'
-      - '.github/scripts/build_1139.py'
+      - '.github/scripts/build_1140.py'
       - '.github/workflows/deploy.yml'
   workflow_dispatch:
 
@@ -26,19 +26,19 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Build EnB Droplist 1.1.39 from verified 1.1.38 release
+      - name: Build EnB Droplist 1.1.40 from verified 1.1.39 release
         shell: bash
         run: |
           set -euo pipefail
-          python .github/scripts/build_1139.py
+          python .github/scripts/build_1140.py
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add "release/EnB Droplist.zip" release/version.json
           if ! git diff --cached --quiet; then
-            git commit -m "Release EnB Droplist 1.1.39 built and verified"
+            git commit -m "Release EnB Droplist 1.1.40 built and verified"
             git push
           else
-            echo "Release already at verified 1.1.39; nothing to commit."
+            echo "Release already at verified 1.1.40; nothing to commit."
           fi
 
       - name: Verify release manifest matches ZIP
@@ -50,14 +50,14 @@ jobs:
           zp=pathlib.Path('release/EnB Droplist.zip')
           m=json.loads(pathlib.Path('release/version.json').read_text(encoding='utf-8'))
           actual=hashlib.sha256(zp.read_bytes()).hexdigest()
-          if m.get('version')!='1.1.39': raise SystemExit('wrong version '+str(m.get('version')))
+          if m.get('version')!='1.1.40': raise SystemExit('wrong version '+str(m.get('version')))
           if actual!=str(m.get('sha256','')).lower(): raise SystemExit('SHA mismatch')
           if zp.stat().st_size<40000: raise SystemExit('ZIP unexpectedly small')
           with zipfile.ZipFile(zp) as z:
               if z.testzip(): raise SystemExit('ZIP integrity failed')
               tray=next(n for n in z.namelist() if n.endswith('enb_drop_logger_tray.py'))
               source=z.read(tray).decode('utf-8')
-              for required in ('is_level_only_target_name','update_zone(zone)','live_overlay["zone"] = zone','ZONE SOURCE:'):
+              for required in ('readers_agree','title_similarity(map_title, probe_title)','update_zone(chosen_zone)','is_level_only_target_name'):
                   if required not in source: raise SystemExit('missing '+required)
           print('release verification: OK',m['version'],actual,zp.stat().st_size)
           PY
