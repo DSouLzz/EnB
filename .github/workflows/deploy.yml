@@ -57,7 +57,7 @@ jobs:
               if z.testzip(): raise SystemExit('ZIP integrity failed')
               tray=next(n for n in z.namelist() if n.endswith('enb_drop_logger_tray.py'))
               source=z.read(tray).decode('utf-8')
-              for required in ('is_level_only_target_name','current_zone = zone','live_overlay["zone"] = zone','ZONE SOURCE:'):
+              for required in ('is_level_only_target_name','update_zone(zone)','live_overlay["zone"] = zone','ZONE SOURCE:'):
                   if required not in source: raise SystemExit('missing '+required)
           print('release verification: OK',m['version'],actual,zp.stat().st_size)
           PY
