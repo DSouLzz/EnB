@@ -1,8 +1,8 @@
 {
   "name": "EnB Droplist",
-  "version": "1.1.37",
+  "version": "1.1.38",
   "download_url": "https://soulbound.se/EnB/Download/EnB%20Droplist.zip",
-  "sha256": "56c1a0ad829db8e619061bc3de0659ca99afdb9c53d05fb89de0cf9f8a5ea39a",
+  "sha256": "c631a09db25fea9dcdea4b8750dcc4ee916a7197eaeaa948c53fe65dd7a6a7b5",
   "release_date": "2026-08-24",
-  "release_notes": "Target OCR rejects fuzzy Sector Gate/navigation-object names. OCR Status/Test shows ZONE SOURCE while preserving the working confirmed-zone logic."
+  "release_notes": "Target OCR never accepts Level/Lvl/Lv plus a number as the mob name. Enemy recognition still requires a level signal, and OCR Status/Test now syncs its confirmed map zone into the F8 overlay."
 }
