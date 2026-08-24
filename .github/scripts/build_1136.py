@@ -44,12 +44,18 @@ try:
     s=s.replace('title_ok=bool(title and support>=2)','title_ok=bool(title and support>=3)')
     s=s.replace('probe_support>=2','probe_support>=3').replace('probe_support >= 2','probe_support >= 3')
 
-    old='''        if (map_open or probe_support >= 3) and (fallback_zone or probe_zone) and plausible_zone_title(fallback_zone):\n            chosen = fallback_zone if fallback_zone and plausible_zone_title(fallback_zone) else probe_zone\n'''
-    if old not in s:
-        old='''        if (map_open or probe_support >= 2) and (fallback_zone or probe_zone) and plausible_zone_title(fallback_zone):\n            chosen = fallback_zone if fallback_zone and plausible_zone_title(fallback_zone) else probe_zone\n'''
-    new='''        if (map_open or probe_support >= 3) and (\n            (fallback_zone and plausible_zone_title(fallback_zone))\n            or (probe_zone and probe_support >= 3 and plausible_zone_title(probe_zone))\n        ):\n            chosen = fallback_zone if fallback_zone and plausible_zone_title(fallback_zone) else probe_zone\n'''
-    if old not in s: raise SystemExit('F8 zone condition missing')
-    s=s.replace(old,new,1)
+    # GitHub 1.1.35 and the local 1.1.35 package have slightly different formatting.
+    # Replace the F8 condition by regex rather than relying on one exact string.
+    pattern=r'''        if \(map_open or probe_support >= 3\) and \(\(fallback_zone and plausible_zone_title\(fallback_zone\)\) or probe_zone\):\n(?:            .*\n){1,3}?'''
+    m=re.search(pattern,s)
+    if m:
+        repl='''        if (map_open or probe_support >= 3) and (\n            (fallback_zone and plausible_zone_title(fallback_zone))\n            or (probe_zone and probe_support >= 3 and plausible_zone_title(probe_zone))\n        ):\n            chosen = fallback_zone if fallback_zone and plausible_zone_title(fallback_zone) else probe_zone\n'''
+        s=s[:m.start()]+repl+s[m.end():]
+    else:
+        old='''        if (map_open or probe_support >= 3) and (fallback_zone or probe_zone) and plausible_zone_title(fallback_zone):\n            chosen = fallback_zone if fallback_zone and plausible_zone_title(fallback_zone) else probe_zone\n'''
+        if old not in s: raise SystemExit('F8 zone condition missing')
+        new='''        if (map_open or probe_support >= 3) and (\n            (fallback_zone and plausible_zone_title(fallback_zone))\n            or (probe_zone and probe_support >= 3 and plausible_zone_title(probe_zone))\n        ):\n            chosen = fallback_zone if fallback_zone and plausible_zone_title(fallback_zone) else probe_zone\n'''
+        s=s.replace(old,new,1)
 
     fs=s.index('def show_ocr_status(*_):');fe=s.index('\ndef load_overlay_position',fs)
     impl=s[fs:fe].replace('def show_ocr_status(*_):','def _show_ocr_status_impl():',1)
